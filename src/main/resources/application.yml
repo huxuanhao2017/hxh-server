@@ -1,11 +1,11 @@
 server:
   port: 8090
   servlet:
-    context-path: /hxh
+   context-path: /hxh
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useSSL=false&amp;characterEncoding=utf-8&amp;jdbcCompliantTruncation=false&amp;zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://localhost:3306/admin?useSSL=false&amp;characterEncoding=utf-8&amp;jdbcCompliantTruncation=false&amp;zeroDateTimeBehavior=convertToNull
     username: root
     password: root
   redis:
@@ -23,9 +23,6 @@ spring:
     properties:
       hibernate:
         dialect : org.hibernate.dialect.MySQL5Dialect
-  jackson:
-      date-format: yyyy-MM-dd HH:mm:ss
-      time-zone: UTC
 
 logging:
   level:

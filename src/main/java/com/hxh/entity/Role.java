@@ -10,7 +10,7 @@ import javax.persistence.*;
  * @date: create in 2018/2/27
  */
 @Entity
-@Table(name = "role")
+@Table(name = "sys_role")
 @Getter
 @Setter
 public class Role {
@@ -39,6 +39,6 @@ public class Role {
     /**
      * 描述
      */
-    @Column(name = "des")
-    private String des;
+    @Column(name = "describe")
+    private String describe;
 }

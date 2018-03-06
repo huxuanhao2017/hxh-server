@@ -11,7 +11,7 @@ import java.util.List;
  * @author hxh
  */
 @Entity
-@Table(name = "menu")
+@Table(name = "sys_menu")
 @Getter
 @Setter
 public class Menu {
@@ -35,7 +35,7 @@ public class Menu {
     /**
      * 父类id
      */
-    @Column(name = "parentId")
+    @Column(name = "parent_id")
     private int parentId;
     /**
      * 排序

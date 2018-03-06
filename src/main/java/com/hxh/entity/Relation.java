@@ -10,7 +10,7 @@ import javax.persistence.*;
  * @date: create in 2018/2/27
  */
 @Entity
-@Table(name = "relation")
+@Table(name = "r_user_role")
 @Getter
 @Setter
 public class Relation {
@@ -22,11 +22,11 @@ public class Relation {
     /**
      * 用户ID
      */
-    @Column(name = "userId")
+    @Column(name = "user_id")
     private Integer userId;
     /**
      * 角色ID
      */
-    @Column(name = "roleId")
+    @Column(name = "role_id")
     private Integer roleId;
 }

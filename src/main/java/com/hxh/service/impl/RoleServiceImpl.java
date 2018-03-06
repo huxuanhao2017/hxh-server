@@ -35,7 +35,7 @@ public class RoleServiceImpl implements RoleService {
     public void deleteRoles(String roleIds) {
         String[] split = roleIds.split(",");
         for (String roleId : split) {
-            roleRepository.delete(Integer.parseInt(roleId));
+            roleRepository.deleteById(Integer.parseInt(roleId));
         }
     }
 }

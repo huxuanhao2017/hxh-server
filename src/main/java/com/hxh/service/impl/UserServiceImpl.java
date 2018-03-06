@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
     public void deleteUsers(String userIds) {
         String[] split = userIds.split(",");
         for (String userId : split) {
-            userRepository.delete(Integer.parseInt(userId));
+            userRepository.deleteById(Integer.parseInt(userId));
         }
     }
 }

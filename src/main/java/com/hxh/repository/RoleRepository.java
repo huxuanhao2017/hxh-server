@@ -23,4 +23,7 @@ public interface RoleRepository extends JpaRepository<Role, Integer>, JpaSpecifi
      */
     @Query("select u.modules from Role u where u.id in (?1)")
     List<String> findModules(List<Integer> roleIdList);
+
+    @Query("select u from Role u where u.id in ?1")
+    List<Role> getRoles(List<Integer> roleIdList);
 }
