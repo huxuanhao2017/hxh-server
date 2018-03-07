@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -29,6 +30,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findByLoginNameAndPage(String loginName, int pageIndex) {
         Pageable pageable = new PageRequest(pageIndex - 1, Constant.PAGE_SIZE);
+        if (StringUtils.isEmpty(loginName)) {
+            return userRepository.findAll(pageable).getContent();
+        }
         return userRepository.findByLoginName(loginName, pageable).getContent();
     }
 

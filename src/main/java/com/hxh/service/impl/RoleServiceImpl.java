@@ -38,4 +38,9 @@ public class RoleServiceImpl implements RoleService {
             roleRepository.deleteById(Integer.parseInt(roleId));
         }
     }
+
+    @Override
+    public List<Role> getAll() {
+        return roleRepository.findAll();
+    }
 }

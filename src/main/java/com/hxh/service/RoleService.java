@@ -31,4 +31,10 @@ public interface RoleService {
      * @param roleIds ','(逗号隔开)
      */
     void deleteRoles(String roleIds);
+
+    /**
+     * 查询
+     * @return
+     */
+    List<Role> getAll();
 }

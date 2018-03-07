@@ -55,4 +55,14 @@ public class RoleController {
         roleService.deleteRoles(roleIds);
         return ApiResult.resultWith(ApiCode.SUCCESS);
     }
+
+    /**
+     * 得到角色全部数据
+     *
+     * @return
+     */
+    @GetMapping("/all")
+    public ApiResult allRoles() {
+        return ApiResult.resultWith(ApiCode.SUCCESS, roleService.getAll());
+    }
 }
