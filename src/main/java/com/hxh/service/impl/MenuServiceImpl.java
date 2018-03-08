@@ -1,5 +1,6 @@
 package com.hxh.service.impl;
 
+import com.hxh.common.Constant;
 import com.hxh.entity.Menu;
 import com.hxh.entity.Relation;
 import com.hxh.entity.Role;
@@ -8,6 +9,8 @@ import com.hxh.repository.RelationRepository;
 import com.hxh.repository.RoleRepository;
 import com.hxh.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -59,5 +62,36 @@ public class MenuServiceImpl implements MenuService {
             menuList.add(p);
         });
         return menuList;
+    }
+
+    @Override
+    public List<Menu> getByParentId(int parentId) {
+        return menuRepository.findByParentId(parentId);
+    }
+
+    @Override
+    public List<Menu> getAllMenus(String menuId, int page) {
+        Pageable pageable = new PageRequest(page - 1, Constant.PAGE_SIZE);
+        if (StringUtils.isEmpty(menuId)) {
+            return menuRepository.findAll();
+        }
+        return menuRepository.findByIdOrParentId(Integer.parseInt(menuId), Integer.parseInt(menuId), pageable).getContent();
+    }
+
+    @Override
+    public void saveMenu(Menu menu) {
+        menuRepository.save(menu);
+    }
+
+    @Override
+    public void deleteMenus(List<String> groupId) {
+        groupId.forEach(id -> {
+            menuRepository.deleteById(Integer.parseInt(id));
+        });
+    }
+
+    @Override
+    public List<Menu> getSubmenus() {
+        return menuRepository.findByUrlIsNotNull();
     }
 }

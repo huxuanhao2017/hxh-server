@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.transaction.Transactional;
+import java.beans.Transient;
 import java.util.List;
 
 /**
@@ -37,14 +39,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public User saveUser(User user) {
         return userRepository.save(user);
     }
 
     @Override
-    public void deleteUsers(String userIds) {
-        String[] split = userIds.split(",");
-        for (String userId : split) {
+    @Transactional
+    public void deleteUsers(List<String> userIds) {
+        for (String userId : userIds) {
             userRepository.deleteById(Integer.parseInt(userId));
         }
     }

@@ -39,7 +39,7 @@ public class RoleController {
      * @return
      */
     @PostMapping("/save")
-    public ApiResult insertRole(Role role) {
+    public ApiResult insertRole(@RequestBody Role role) {
         Role saveRole = roleService.save(role);
         return ApiResult.resultWith(ApiCode.SUCCESS, saveRole);
     }

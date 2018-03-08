@@ -48,7 +48,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/save")
-    public ApiResult insertUser(User user) {
+    public ApiResult insertUser(@RequestBody User user) {
         User saveUser = userService.saveUser(user);
         return ApiResult.resultWith(ApiCode.SUCCESS, saveUser);
     }
@@ -59,8 +59,8 @@ public class UserController {
      * @param userIds
      * @return
      */
-    @GetMapping("/delete")
-    public ApiResult deleteUsers(String userIds) {
+    @DeleteMapping("/delete")
+    public ApiResult deleteUsers(@RequestBody List<String> userIds) {
         userService.deleteUsers(userIds);
         return ApiResult.resultWith(ApiCode.SUCCESS);
     }

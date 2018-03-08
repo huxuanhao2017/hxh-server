@@ -3,6 +3,7 @@ package com.hxh.service;
 import com.hxh.entity.User;
 import org.springframework.data.jpa.repository.Query;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -33,6 +34,7 @@ public interface UserService {
      * @param user
      * @return
      */
+    @Transactional
     User saveUser(User user);
 
     /**
@@ -40,5 +42,6 @@ public interface UserService {
      *
      * @param userIds ','(逗号隔开)
      */
-    void deleteUsers(String userIds);
+    @Transactional
+    void deleteUsers(List<String> userIds);
 }
